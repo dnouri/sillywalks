@@ -86,7 +86,9 @@ optimize them if needed.
 
 Here's what an output plot might look like:
 
-[![process_stats.png](https://github.com/dnouri/sillywalks/blob/add-plot-example-to-readme/assets/process_stats.png?sanitize=true&width=100)](https://github.com/dnouri/sillywalks/blob/main/assets/process_stats.png)
+<a href="https://github.com/dnouri/sillywalks/blob/main/assets/process_stats.png">
+  <img src="https://github.com/dnouri/sillywalks/blob/add-plot-example-to-readme/assets/process_stats.png" alt="Example plot" style="height: 100px;"/>
+</a>
 
 ## Output 📊🐟
 
