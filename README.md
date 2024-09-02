@@ -84,6 +84,12 @@ This command monitors a machine learning model training process. It
 can help you understand the resource requirements of your ML jobs and
 optimize them if needed.
 
+Here's what an output plot might look like:
+
+<a href="https://github.com/dnouri/sillywalks/blob/main/assets/process_stats.png">
+  <img src="https://github.com/dnouri/sillywalks/blob/main/assets/process_stats.png" alt="Example plot" style="height: 300px;"/>
+</a>
+
 ## Output 📊🐟
 
 sillywalks provides three types of output:
