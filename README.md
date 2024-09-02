@@ -84,35 +84,21 @@ This command monitors a machine learning model training process. It
 can help you understand the resource requirements of your ML jobs and
 optimize them if needed.
 
-Here's what an output plot might look like:
-
-<a href="https://github.com/dnouri/sillywalks/blob/main/assets/process_stats.png">
-  <img src="https://github.com/dnouri/sillywalks/blob/main/assets/process_stats.png" alt="Example plot" style="height: 300px;"/>
-</a>
-
 ## Output 📊🐟
 
-sillywalks provides three types of output:
+sillywalks provides two types of output:
 
 1. Real-time console updates: These appear in your terminal as the
    monitored process runs.
 
-2. Time-series plot (`sillywalks_stats.png`): A graph showing how
+2. Time-series plot (`process_stats.png`): A graph showing how
    resource usage changes over time.
 
-3. Summary statistics table: A final report of the overall resource
-   usage.
+Here's what the time-series plot might look like:
 
-## Limitations 🦸‍♂️
-
-- Subprocess tracking accuracy may vary depending on the system and
-  the processes being monitored.
-
-- Currently offers limited customization options for monitoring and
-  reporting.
-
-- May need optimization for very long-running processes to manage data
-  collection and storage efficiently.
+<a href="https://github.com/dnouri/sillywalks/blob/main/assets/process_stats.png">
+  <img src="https://github.com/dnouri/sillywalks/blob/main/assets/process_stats.png" alt="Example plot" style="height: 300px;"/>
+</a>
 
 ## Profiling vs. Monitoring 🕵️‍♂️🧠
 
@@ -143,22 +129,32 @@ profiler like py-spy when you need to optimize at the code level.
 ## 🧹 Linting
 
 We use Ruff and Black to lint and prettify the code.  You may want to
-install the respective plug-ins for your editor.
-
-To run Black and SQLFluff locally, use:
+install the respective plug-ins for your editor.  To run Black and
+Ruff in your source checkout, use:
 
 ```bash
 make lint
 ```
+
+## References
+
+- I [blogged about how I used an LLM to write the code for
+  sillywalks](https://danielnouri.org/notes/2024/09/02/the-hottest-new-programming-language-is-english/).
+  The blog post contains lessons learned and advice on how to best
+  learn the skill of [prompt
+  engineering](https://huggingface.co/docs/transformers/en/tasks/prompting)
+  for beginners and others!
+
+- This software uses [psutil](https://psutil.readthedocs.io/) at its
+  core.  psutil is a cross-platform library for retrieving information
+  on running processes and system utilization (CPU, memory, disks,
+  network, sensors) in Python.
+
+- Monty Python's [Ministry of Silly Walks on
+  YouTube](https://youtu.be/iV2ViNJFZC8)
 
 ## Contributing 🐮
 
 Contributions are welcome! Feel free to submit issues or pull requests
 on our GitHub repository. Whether you're fixing bugs, adding features,
 or improving documentation, your help is appreciated.
-
-## License ⚖️
-
-This project is under the MIT License. See the LICENSE file for
-details. The MIT License is a permissive open-source license that
-allows for reuse with few restrictions.
