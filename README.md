@@ -87,7 +87,7 @@ optimize them if needed.
 Here's what an output plot might look like:
 
 <a href="https://github.com/dnouri/sillywalks/blob/main/assets/process_stats.png">
-  <img src="https://github.com/dnouri/sillywalks/blob/add-plot-example-to-readme/assets/process_stats.png" alt="Example plot" style="height: 100px;"/>
+  <img src="https://github.com/dnouri/sillywalks/blob/add-plot-example-to-readme/assets/process_stats.png" alt="Example plot" style="height: 300px;"/>
 </a>
 
 ## Output 📊🐟
