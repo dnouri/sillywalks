@@ -2,16 +2,17 @@
 
 ## About 🦜
 
-A whimsical resource monitor that prances through your processes,
-tracking CPU, memory, and I/O with a spring in its step!
+A command-line tool to mintor CPU, memory, and I/O of a process.
+
+Here's a YouTube video that shows usage:
+
+[![sillywalks intro](https://img.youtube.com/vi/3a7gU9Y_5f4/0.jpg)](https://www.youtube.com/watch?v=3a7gU9Y_5f4)
 
 ## Features 🧀
 
-- Tracks CPU usage, memory consumption, and I/O operations
-- Monitors main process and its subprocesses
-- Provides real-time console updates
+- Tracks CPU usage, memory consumption, and I/O
+- Monitors process and its subprocesses
 - Generates time-series plots
-- Outputs summary statistics
 
 ## Installation 🛋️
 
@@ -30,20 +31,17 @@ Install sillywalks from source:
 pip install -e ".[devel]"
 ```
 
-Or from PyPI:
+Or from PyPI (soon):
 
 ```bash
 pip install sillywalks
 ```
 
-Note: `pip` is a package installer for Python. The `-e` flag installs
-the package in 'editable' mode, which is useful for developers.
-
 ## Usage 🥥
 
-sillywalks is a command-line interface (CLI) tool. A CLI is a
+`sillywalks` is a command-line interface (CLI) tool. A CLI is a
 text-based interface where you enter commands in a terminal or command
-prompt. Run sillywalks with:
+prompt. Run sillywalks like this:
 
 ```bash
 sillywalks <command> [args...]
@@ -61,8 +59,8 @@ sillywalks python3 my_script.py
 ```
 
 This command will run `my_script.py` using Python 3 and monitor its
-resource usage. It's useful for understanding how your Python scripts
-perform and use system resources.
+resource usage. It's useful for understanding things like maximum CPU
+usage.
 
 2. Watching a video encoding process:
 
@@ -72,7 +70,7 @@ sillywalks ffmpeg -i input.mp4 -c:v libx264 -crf 23 output.mp4
 
 This example monitors the resource usage of FFmpeg, a popular video
 and audio processing tool, while it encodes a video. It's helpful for
-seeing how resource-intensive video encoding can be.
+seeing how resource-intensive this encoding process is.
 
 3. Tracking a machine learning training job:
 
