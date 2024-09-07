@@ -104,6 +104,62 @@ Key points:
 - I/O rates are calculated in megabytes per second (MB/s) for both
   read and write operations.
 
+## 📊 Prometheus Integration
+
+sillywalks offers integration with
+[Prometheus](https://prometheus.io/), a powerful monitoring and
+alerting toolkit. This feature allows you to collect and store metrics
+over time, enabling advanced querying, visualization, and alerting
+capabilities.
+
+### Activating Prometheus Output
+
+To enable Prometheus metrics, use the `--prometheus` flag:
+
+```bash
+sillywalks --prometheus your_command
+```
+
+By default, the Prometheus metrics server starts on port 8000. Specify
+a different port with `--port`:
+
+```bash
+sillywalks --prometheus --port 9090 your_command
+```
+
+### Available Metrics
+
+sillywalks exposes the following metrics:
+
+- `process_memory_usage_mb`: Memory usage in MB
+- `process_cpu_usage_percent`: CPU usage in percent
+- `process_io_read_mbps`: I/O read rate in MB/s
+- `process_io_write_mbps`: I/O write rate in MB/s
+
+### Using Prometheus with sillywalks
+
+1. Configure Prometheus to scrape metrics from the sillywalks
+   endpoint. Refer to the [Prometheus configuration
+   documentation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/)
+   for details.
+
+2. Use PromQL to query and analyze your data. Check the [PromQL
+   documentation](https://prometheus.io/docs/prometheus/latest/querying/basics/)
+   for query examples and best practices.
+
+3. Visualize metrics using [Grafana](https://grafana.com/) or the
+   Prometheus web UI. The [Grafana
+   documentation](https://grafana.com/docs/grafana/latest/getting-started/get-started-grafana-prometheus/)
+   provides guidance on setting up dashboards.
+
+4. Set up alerts based on your metrics. The [Prometheus alerting
+   documentation](https://prometheus.io/docs/alerting/latest/overview/)
+   explains how to configure alerting rules.
+
+By integrating sillywalks with Prometheus, you can gain deeper
+insights into your process's behavior over time and incorporate this
+monitoring into your broader observability infrastructure.
+
 ## 🤔 When to Use sillywalks
 
 sillywalks is ideal for high-level resource monitoring of
