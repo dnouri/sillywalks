@@ -1,23 +1,27 @@
 # sillywalks 🎩👞
 
-## About 🦜
+## 🦜 About
 
-A command-line tool to mintor CPU, memory, and I/O of a process.
+sillywalks is a command-line tool for monitoring CPU, memory, and I/O
+usage of a process and its subprocesses. It provides real-time
+statistics and generates time-series plots, offering insights into
+resource consumption over time.
 
 Here's a YouTube video that shows usage:
 
 [![sillywalks intro](https://img.youtube.com/vi/3a7gU9Y_5f4/0.jpg)](https://www.youtube.com/watch?v=3a7gU9Y_5f4)
 
-## Features 🧀
+## 🧀 Features
 
-- Tracks CPU usage, memory consumption, and I/O
-- Monitors process and its subprocesses
-- Generates time-series plots
+- Tracks CPU usage, memory consumption, and I/O rates
+- Monitors the main process and its subprocesses
+- Provides real-time console updates
+- Generates time-series plots for easy visualization
+- Offers optional Prometheus metrics output
 
-## Installation 🛋️
+## 🛋️  Installation
 
-To install project requirements, it's first recommended to create a
-virtualenv:
+It's recommended to use a virtual environment:
 
 ```bash
 python3 -m venv venv
@@ -37,92 +41,81 @@ Or from PyPI (soon):
 pip install sillywalks
 ```
 
-## Usage 🥥
+## 🥥 Usage
 
-`sillywalks` is a command-line interface (CLI) tool. A CLI is a
-text-based interface where you enter commands in a terminal or command
-prompt. Run sillywalks like this:
+Run sillywalks from the command line:
 
 ```bash
-sillywalks <command> [args...]
+sillywalks [options] <command> [args...]
 ```
 
 Replace `<command>` with the program you want to monitor, and
 `[args...]` with any arguments for that program.
 
-### Examples
+### 🎛️ Options
 
-1. Monitoring a Python script:
+- `--frequency FLOAT`: Set the logging frequency in Hz (default: 10.0)
+- `--no-console`: Disable console output
+- `--prometheus`: Enable Prometheus metrics
+- `--port INT`: Set the port for Prometheus metrics server (default: 8000)
 
-```bash
-sillywalks python3 my_script.py
-```
+### 📚 Examples
 
-This command will run `my_script.py` using Python 3 and monitor its
-resource usage. It's useful for understanding things like maximum CPU
-usage.
+1. Monitor a Python script:
+   ```bash
+   sillywalks python3 my_script.py
+   ```
 
-2. Watching a video encoding process:
+2. Watch a video encoding process:
+   ```bash
+   sillywalks ffmpeg -i input.mp4 -c:v libx264 -crf 23 output.mp4
+   ```
 
-```bash
-sillywalks ffmpeg -i input.mp4 -c:v libx264 -crf 23 output.mp4
-```
+3. Track a machine learning training job and enable the Prometheus metrics:
+   ```bash
+   sillywalks --prometheus python3 train_model.py --epochs 100 --batch-size 32
+   ```
 
-This example monitors the resource usage of FFmpeg, a popular video
-and audio processing tool, while it encodes a video. It's helpful for
-seeing how resource-intensive this encoding process is.
-
-3. Tracking a machine learning training job:
-
-```bash
-sillywalks python3 train_model.py --epochs 100 --batch-size 32
-```
-
-This command monitors a machine learning model training process. It
-can help you understand the resource requirements of your ML jobs and
-optimize them if needed.
-
-## Output 📊🐟
+## 📊 Output
 
 sillywalks provides two types of output:
 
 1. Real-time console updates: These appear in your terminal as the
    monitored process runs.
+2. Time-series plot: A PNG file showing how resource usage changes
+   over time.
 
-2. Time-series plot (`process_stats.png`): A graph showing how
-   resource usage changes over time.
+The plot includes separate graphs for memory usage, CPU usage, and I/O
+rates (read and write).
 
-Here's what the time-series plot might look like:
+## 🔧 Under the Hood
 
-<a href="https://github.com/dnouri/sillywalks/blob/main/assets/process_stats.png">
-  <img src="https://github.com/dnouri/sillywalks/blob/main/assets/process_stats.png" alt="Example plot" style="height: 300px;"/>
-</a>
+sillywalks uses [psutil](https://psutil.readthedocs.io/) (Python
+System and Process Utilities) to collect resource usage data. It
+periodically samples the process and its subprocesses, calculating CPU
+usage, memory consumption, and I/O rates. The tool uses
+[matplotlib](https://matplotlib.org/) to generate the time-series
+plots.
 
-## Profiling vs. Monitoring 🕵️‍♂️🧠
+Key points:
 
-While sillywalks is great for overall resource monitoring, sometimes
-you need more detailed code-level insights. In such cases, consider
-using a profiler:
+- CPU usage is calculated as a percentage of total CPU time.
+- Memory usage is measured in megabytes (MB) using the Unique Set Size (USS).
+- I/O rates are calculated in megabytes per second (MB/s) for both
+  read and write operations.
 
-- Use sillywalks for: High-level resource tracking of CPU, memory, and
-I/O.
+## 🤔 When to Use sillywalks
 
-- Use a profiler for: Identifying code bottlenecks, memory leaks, or
-creating call graphs.
+sillywalks is ideal for high-level resource monitoring of
+processes. Use it when you want to:
 
-For Python, [py-spy](https://github.com/benfred/py-spy) is a popular
-sampling profiler that can attach to running processes with low
-overhead. It provides detailed performance insights without modifying
-your code.
+- Understand the overall resource consumption of a program
+- Identify performance bottlenecks at a process level
+- Monitor long-running tasks or background processes
 
-Example:
-
-```bash
-py-spy record -o profile.svg --pid 12345
-```
-
-Choose sillywalks for general resource monitoring, and switch to a
-profiler like py-spy when you need to optimize at the code level.
+For more detailed, code-level insights, consider using a profiler like
+[py-spy](https://github.com/benfred/py-spy) in conjunction with
+sillywalks.
 
 ## 🧹 Linting
 
@@ -134,9 +127,9 @@ Ruff in your source checkout, use:
 make lint
 ```
 
-## References
+## 🐟 References
 
-- I [blogged about how I used an LLM to write the code for
+- Daniel [blogged about how I used an LLM to write the code for
   sillywalks](https://danielnouri.org/notes/2024/09/02/the-hottest-new-programming-language-is-english/).
   The blog post contains lessons learned and advice on how to best
   learn the skill of [prompt
@@ -151,7 +144,7 @@ make lint
 - Monty Python's [Ministry of Silly Walks on
   YouTube](https://youtu.be/iV2ViNJFZC8)
 
-## Contributing 🐮
+## 🐮 Contributing
 
 Contributions are welcome! Feel free to submit issues or pull requests
 on our GitHub repository. Whether you're fixing bugs, adding features,
